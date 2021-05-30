@@ -1,0 +1,13 @@
+{# templates/import/index.html.twig #}
+{% extends 'layout.html.twig' %}
+
+{% block title %}Import Successful{% endblock %}
+{% block heading %}Success!{% endblock %}
+
+{% block page_contents %}
+    <div class="row">
+        <div class="col">
+            {{ include('import/_results-csv.html.twig', {data}) }}
+        </div>
+    </div>
+{% endblock %}

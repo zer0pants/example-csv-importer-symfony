@@ -1,0 +1,9 @@
+{# templates/layout.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="container-fluid">
+        <h1>{% block heading %}{% endblock %}</h1>
+        {% block page_contents %}{% endblock %}
+    </div>
+{% endblock %}

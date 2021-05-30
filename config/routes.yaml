@@ -1,3 +1,18 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+index:
+   path: /
+   controller: App\Controller\ImportController::create
+
+import_create:
+  path:       /import/object
+  controller: App\Controller\ImportController::create
+  methods:    GET|POST
+
+import_show:
+  path:       /import/show
+  controller: App\Controller\ImportController::show
+  methods:    GET
+
+import_help:
+  path:       /import/help
+  controller: App\Controller\HelpController::index
+  methods:    GET
