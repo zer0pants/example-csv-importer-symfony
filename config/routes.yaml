@@ -10,7 +10,7 @@ import_create:
 import_show:
   path:       /import/show
   controller: App\Controller\ImportController::show
-  methods:    GET
+  methods:    POST
 
 import_help:
   path:       /import/help

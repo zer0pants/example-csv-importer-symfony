@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use Symfony\Component\HttpFoundation\File\File;
 
-class Import
+abstract class Import implements IImport
 {
     protected $object;
 
@@ -13,13 +13,12 @@ class Import
         $this->object = $object;
     }
 
-    // TODO - return types / docs
     public function getObject(): ?File
     {
         return $this->object;
     }
 
-    public function setObject($object): void
+    public function setObject(File $object): void
     {
         $this->object = $object;
     }
