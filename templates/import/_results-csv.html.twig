@@ -1,24 +1,27 @@
 {# templates/import/_results-csv.html.twig #}
 <h2>Bank Transactions from CSV</h2>
-<table class="table table-dark">
+<table class="table">
     <thead>
         <tr>
             <th scope="col">#</th>
             <th scope="col">Date</th>
             <th scope="col">Transaction Code</th>
+            <th scope="col">Valid?</th>
             <th scope="col">Customer Number</th>
             <th scope="col">Reference</th>
             <th scope="col">Amount</th>
-            <th scope="col">Valid?</th>
         </tr>
     </thead>
     <tbody>
-        {% for key, dataRows in data %}
+        {% for key, row in data %}
             <tr>
                 <th scope="row">{{ key + 1 }}</th>
-                {% for key, datem in dataRows %}
-                    <td>{{ datem }}</td>
-                {% endfor %}
+                <td>{{ row.date }}</td>
+                <td>{{ row.transactionnumber }}</td>
+                <td>{{ row.valid ? 'Yes' : 'No' }}</td>
+                <td>{{ row.customernumber }}</td>
+                <td>{{ row.reference }}</td>
+                <td class="{{ row.type == 'debit' ? 'alert-danger' }}">{{ row.amount }}</td>
             </tr>
         {% endfor %}
     </tbody>
