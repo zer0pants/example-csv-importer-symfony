@@ -6,22 +6,19 @@
             <th scope="col">#</th>
             <th scope="col">Date</th>
             <th scope="col">Transaction Code</th>
-            <th scope="col">Valid Transaction?</th>
             <th scope="col">Customer Number</th>
             <th scope="col">Reference</th>
             <th scope="col">Amount</th>
+            <th scope="col">Valid?</th>
         </tr>
     </thead>
     <tbody>
-        {% for key, datem in data %}
+        {% for key, dataRows in data %}
             <tr>
                 <th scope="row">{{ key + 1 }}</th>
-                <td>{{ datem }}</td>
-                <td>{{ 2 }}</td>
-                <td>{{ 3 }}</td>
-                <td>{{ 4 }}</td>
-                <td>{{ 5 }}</td>
-                <td>{{ 6 }}</td>
+                {% for key, datem in dataRows %}
+                    <td>{{ datem }}</td>
+                {% endfor %}
             </tr>
         {% endfor %}
     </tbody>

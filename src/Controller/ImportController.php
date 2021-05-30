@@ -9,7 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
+use Symfony\Component\Translation\Loader\CsvFileLoader;
 
 class ImportController extends AbstractController
 {
@@ -24,8 +24,16 @@ class ImportController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $import = $form->getData();
-            $todo = null;
-            return $this->redirectToRoute('import_show');
+        
+            // TODO get handler
+            $csvData = str_getcsv($import->getObject()->getContent(), "\n");
+            array_shift($csvData);
+            $csvRowsArray = array_map(function ($index, $row) {
+                $processedRow = str_getcsv($row, ',');
+                return $processedRow;
+            }, array_keys($csvData), $csvData);
+
+            return $this->redirectToRoute('import_show', ['import_data' => $csvRowsArray]);
         }
 
         return $this->render('import/create.html.twig', [
@@ -34,10 +42,16 @@ class ImportController extends AbstractController
         ]);
     }
 
+    private function handleImportData()
+    {
+        // TODO - temporary function here to process data from the file
+
+    }
+
     public function show(Request $request): Response
     {
         return $this->render('import/show.html.twig', [
-            'data' => $request->data ?? [],
+            'data' => $request->get('import_data', []),
             'type' => 'CSV',
         ]);
     }
