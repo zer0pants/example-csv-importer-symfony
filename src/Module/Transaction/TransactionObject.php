@@ -8,6 +8,8 @@ use App\Module\Verify\CheckCharacterVerification;
 
 use DateTime;
 
+
+// TODO - CLEAN UP
 class TransactionObject implements Transaction, KeyVerifiable
 {
     protected $date;

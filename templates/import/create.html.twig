@@ -20,7 +20,7 @@
         $(document).ready(function() {
             $('input[type="file"]').on("change", function() {
                 let filenames = [];
-                let files = document.getElementById("import_object").files;
+                let files = document.getElementById("import_csv_object").files;
                 if (files.length > 1) {
                     filenames.push("Total Files (" + files.length + ")");
                 } else {

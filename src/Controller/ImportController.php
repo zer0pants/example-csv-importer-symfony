@@ -14,7 +14,6 @@ class ImportController extends AbstractController
 {
     public function create(Request $request): Response
     {
-        // $form = $this->createForm(ImportType::class, new ImportCsv());
         $form = $this->createForm(ImportCsvType::class);
         $form->handleRequest($request);
 

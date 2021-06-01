@@ -2,10 +2,8 @@
 
 namespace App\Module\Import;
 
-use App\Module\Transaction\Transaction;
 use App\Module\Transaction\TransactionObjectFactory;
 use App\Module\Transaction\TransactionVerificationHandler;
-use DateTime;
 
 class ImportCsv extends ImportObject 
 {
