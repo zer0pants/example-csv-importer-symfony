@@ -1,16 +1,21 @@
 <?php
 
-namespace App\Module\Transaction;
+namespace App\Module\Verify;
 
-class VerificationHandler implements IVerify
+class CheckCharacterVerification implements KeyVerification
 {
-    protected $transaction;
+    protected const VALID_CHARS = ['2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K','L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+    
+    protected $verifiable;
 
-    const VALID_CHARS = ['2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K','L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-
-    public function verify(ITransaction $transaction): bool
+    public function __construct(KeyVerifiable $verifiable = null)
     {
-        return $this->verifyKey($transaction->getKey());
+        $this->verifiable = $verifiable;
+    }
+
+    public function check(KeyVerifiable $verifiable): bool
+    {
+        return $this->verifyKey($verifiable->getVerifiableKey());
     }
 
     protected function verifyKey(string $key): bool

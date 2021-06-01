@@ -2,13 +2,13 @@
 
 namespace App\Module\Import;
 
-use App\Entity\IImport;
+use App\Interfaces\Handler;
 
-class ImportHandler implements IHandler
+class ImportHandler implements Handler
 {
     protected $import;
 
-    public function __construct(IImport $import)
+    public function __construct(Importable $import)
     {
         $this->import = $import;
     }

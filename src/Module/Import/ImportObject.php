@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Entity;
+namespace App\Module\Import;
 
 use Symfony\Component\HttpFoundation\File\File;
 
-abstract class Import implements IImport
+abstract class ImportObject implements Importable
 {
     protected $object;
 

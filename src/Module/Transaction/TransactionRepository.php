@@ -2,21 +2,21 @@
 
 namespace App\Module\Transaction;
 
-use App\Module\Transaction\ITransaction;
+use App\Module\Transaction\Transaction;
 
 class TransactionRepository
 {
     protected $transaction;
 
-    public function __construct(ITransaction $transaction)
+    public function __construct(Transaction $transaction)
     {
         $this->transaction = $transaction;
     }
 
-    public static function sortTransactionByDate(ITransaction $a, ITransaction $b)
+    public static function sortTransactionByDate(Transaction $a, Transaction $b)
     {
-        $dateA = strtotime($a->getDate());
-        $dateB = strtotime($b->getDate());
+        $dateA = $a->getDate()->getTimestamp();
+        $dateB = $b->getDate()->getTimestamp();
 
         return $dateA <=> $dateB;
     }

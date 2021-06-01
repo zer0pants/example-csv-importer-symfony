@@ -2,8 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\ImportCsv;
-use App\Form\Type\ImportType;
+use App\Form\Type\ImportCsvType;
 use App\Module\Import\ImportHandler;
 use App\Module\Transaction\TransactionRepository;
 
@@ -15,7 +14,8 @@ class ImportController extends AbstractController
 {
     public function create(Request $request): Response
     {
-        $form = $this->createForm(ImportType::class, new ImportCsv());
+        // $form = $this->createForm(ImportType::class, new ImportCsv());
+        $form = $this->createForm(ImportCsvType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

@@ -17,7 +17,7 @@
         {% for key, row in data %}
             <tr>
                 <th scope="row">{{ key + 1 }}</th>
-                <td>{{ row.date }}</td>
+                <td>{{ row.date|date('Y-m-d H:i:s') }}</td>
                 <td>{{ row.transactionCode }}</td>
                 <td>{{ row.valid ? 'Yes' : 'No' }}</td>
                 <td>{{ row.customerNumber }}</td>

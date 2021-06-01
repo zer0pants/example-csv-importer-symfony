@@ -16,3 +16,8 @@ import_help:
   path:       /import/help
   controller: App\Controller\HelpController::index
   methods:    GET
+
+import_help_sample:
+  path:       /import/help/sample
+  controller: App\Controller\HelpController::sample
+  methods:    GET

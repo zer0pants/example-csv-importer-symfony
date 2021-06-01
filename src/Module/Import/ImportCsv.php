@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Entity;
+namespace App\Module\Import;
 
-use App\Module\Import\ImportRepository;
 use App\Module\Transaction\Transaction;
-use App\Module\Transaction\VerificationHandler;
+use App\Module\Transaction\TransactionObjectFactory;
+use App\Module\Transaction\TransactionVerificationHandler;
+use DateTime;
 
-class ImportCsv extends Import 
+class ImportCsv extends ImportObject 
 {
     public function import(): array
     {
@@ -27,9 +28,12 @@ class ImportCsv extends Import
 
     public function mapToTransaction(array $data): array
     {
+        $verificationHandler = new TransactionVerificationHandler();
+        $transactionFactory = new TransactionObjectFactory($verificationHandler);
+     
         $transactions = [];
         foreach ($data as $row) {
-            $transactions[] = new Transaction($row[0], $row[1], $row[2], $row[3], $row[4], new VerificationHandler());
+            $transactions[] = $transactionFactory->create($row[0], $row[1], $row[2], $row[3], $row[4]);
         }
 
         return $transactions;
