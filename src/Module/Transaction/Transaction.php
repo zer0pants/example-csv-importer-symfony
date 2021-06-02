@@ -6,7 +6,6 @@ use DateTime;
 
 interface Transaction
 {
-    // TODO - how might a transactions behaviour change?
     public function getType(): string;
     public function getDate(): DateTime;
     public function getAmount(): float;

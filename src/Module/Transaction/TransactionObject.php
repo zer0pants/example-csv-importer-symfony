@@ -4,12 +4,9 @@ namespace App\Module\Transaction;
 
 use App\Module\Verify\KeyVerifiable;
 use App\Module\Verify\KeyVerification;
-use App\Module\Verify\CheckCharacterVerification;
 
 use DateTime;
 
-
-// TODO - CLEAN UP
 class TransactionObject implements Transaction, KeyVerifiable
 {
     protected $date;
@@ -28,7 +25,6 @@ class TransactionObject implements Transaction, KeyVerifiable
         $this->customerNumber = $customerNumber;
         $this->reference = $reference;
         $this->amount = $amount;
-        // $this->verification = $verification;
     }
 
     public function getType(): string
@@ -61,19 +57,16 @@ class TransactionObject implements Transaction, KeyVerifiable
         return $this->reference;
     }
 
-    // TODO - Currency class?
     public function getAmount(): float
     {
         return $this->amount / 100;
     }
 
-    // TODO - refactor based on changes
     public function getValid(): bool
     {
         return $this->valid;
     }
 
-    // TODO - want to get rid of this
     public function setKeyVerification(KeyVerification $verification): void
     {
         $this->verification = $verification;

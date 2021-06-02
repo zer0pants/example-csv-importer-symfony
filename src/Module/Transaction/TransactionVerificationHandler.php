@@ -4,7 +4,6 @@ namespace App\Module\Transaction;
 
 use App\Module\Verify\KeyVerifiable;
 use App\Module\Verify\KeyVerification;
-use App\Module\Verify\Verifiable;
 use App\Module\Verify\VerificationHandler;
 
 class TransactionVerificationHandler implements VerificationHandler
